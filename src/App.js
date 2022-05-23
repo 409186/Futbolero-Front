@@ -50,7 +50,7 @@ export default function App() {
     return <LoadingComponent />;
   }
   return (
-    <div className="App">
+    <div>
       <Navbar handleLogout={handleLogout} user={user} />
       <Routes>
         {routes({ user, authenticate, handleLogout }).map((route) => (

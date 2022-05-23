@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    nombreDeUsuario: "",
+    correo: "",
+    contrasena: ""
   });
-  const { username, password } = form;
+  const { nombreDeUsuario, contrasena, correo} = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -22,8 +25,8 @@ export default function Signup({ authenticate }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      username,
-      password,
+      correo,
+      contrasena,
     };
     signup(credentials).then((res) => {
       if (!res.status) {
@@ -42,26 +45,37 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Registrarse</h1>
       <form onSubmit={handleFormSubmission} className="auth__form">
-        <label htmlFor="input-username">Username</label>
-        <input
+        <label htmlFor="input-username">Nombre de Usuario</label>
+        <Form.Control
           id="input-username"
           type="text"
-          name="username"
+          name="nombreDeUsuario"
           placeholder="Text"
-          value={username}
+          value={nombreDeUsuario}
           onChange={handleInputChange}
           required
         />
 
-        <label htmlFor="input-password">Password</label>
-        <input
+        <label htmlFor="input-email">Correo</label>
+        <Form.Control
+          id="input-email"
+          type="email"
+          name="correo"
+          placeholder="futbol@outlook.com"
+          value={correo}
+          onChange={handleInputChange}
+          required
+        />
+
+        <label htmlFor="input-password">Contraseña</label>
+        <Form.Control
           id="input-password"
           type="password"
-          name="password"
+          name="contrasena"
           placeholder="Password"
-          value={password}
+          value={contrasena}
           onChange={handleInputChange}
           required
           minLength="8"
@@ -74,9 +88,9 @@ export default function Signup({ authenticate }) {
           </div>
         )}
 
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
+        <Button variant="success" className="button__submit" type="submit">
+          Enviar
+        </Button>
       </form>
     </div>
   );

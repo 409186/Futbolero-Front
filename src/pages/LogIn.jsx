@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 import "./Signup";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    correo: "",
+    contrasena: "",
   });
-  const { username, password } = form;
+  const { correo, contrasena } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -23,8 +25,8 @@ export default function LogIn({ authenticate }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      username,
-      password,
+      correo,
+      contrasena,
     };
     login(credentials).then((res) => {
       if (!res.status) {
@@ -38,26 +40,26 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
-          name="username"
-          placeholder="username"
-          value={username}
+      <h1>Iniciar Sesion</h1>
+      <form onSubmit={handleFormSubmission} className="auth__form">
+        <label htmlFor="input-username">Correo</label>
+        <Form.Control
+          id="input-email"
+          type="email"
+          name="correo"
+          placeholder="futbol@outlook.com"
+          value={correo}
           onChange={handleInputChange}
           required
         />
 
-        <label htmlFor="input-password">Password</label>
-        <input
+        <label htmlFor="input-password">Contraseña</label>
+        <Form.Control
           id="input-password"
           type="password"
-          name="password"
+          name="contrasena"
           placeholder="Password"
-          value={password}
+          value={contrasena}
           onChange={handleInputChange}
           required
           minLength="8"
@@ -70,9 +72,9 @@ export default function LogIn({ authenticate }) {
           </div>
         )}
 
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
+        <Button variant="success" className="button__submit" type="submit">
+          Entrar
+        </Button>
       </form>
     </div>
   );

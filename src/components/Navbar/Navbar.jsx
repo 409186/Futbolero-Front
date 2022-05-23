@@ -4,12 +4,22 @@ import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 
+
 const Navbar = (props) => {
   return (
     <nav>
-      <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with IronLauncher
-      </Link>
+
+      <div>
+        <Link to={PATHS.HOMEPAGE} className="nav__projectName">
+          {CONSTS.CAPITALIZED_APP}
+        </Link>
+        <Link to={PATHS.EQUIPO} className="nav__projectName">
+          Equipos
+        </Link>
+        <Link to={PATHS.HOMEPAGE} className="nav__projectName">
+          Partidos
+        </Link>
+      </div>
 
       <div className="nav__authLinks">
         {props.user ? (
@@ -24,10 +34,10 @@ const Navbar = (props) => {
         ) : (
           <>
             <Link to={PATHS.SIGNUPPAGE} className="authLink">
-              Signup
+              Registrarse
             </Link>
             <Link to={PATHS.LOGINPAGE} className="authLink">
-              Log In
+              Iniciar Sesión
             </Link>
           </>
         )}
