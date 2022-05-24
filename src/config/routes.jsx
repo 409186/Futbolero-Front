@@ -7,6 +7,7 @@ import ProtectedPage from "../pages/ProtectedPage";
 import * as PATHS from "../utils/paths";
 import Partidos from "../pages/Partidos";
 import Perfil from "../pages/Perfil";
+import Jugadores from "../pages/Jugadores";
 
 const routes = (props) => {
   const { user } = props;
@@ -37,12 +38,16 @@ const routes = (props) => {
       element: <EquiposPage />
     },
     {
-      path: "/partidos", 
+      path: PATHS.PARTIDOS, 
       element: <Partidos />
     },
     {
-      path: "/perfil", 
+      path: PATHS.PERFIL, 
       element: <Perfil />
+    },
+    {
+      path: PATHS.JUGADORES, 
+      element: <Jugadores />
     }
   ];
 };

@@ -40,7 +40,9 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div>
-      <h1>Iniciar Sesion</h1>
+      <center>
+        <h1>Iniciar Sesion</h1>
+      </center>
       <form onSubmit={handleFormSubmission} className="auth__form">
         <label htmlFor="input-username">Correo</label>
         <Form.Control

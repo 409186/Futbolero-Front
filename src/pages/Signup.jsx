@@ -45,7 +45,9 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-      <h1>Registrarse</h1>
+      <center>
+        <h1>Registrarse</h1>
+      </center>
       <form onSubmit={handleFormSubmission} className="auth__form">
         <label htmlFor="input-username">Nombre de Usuario</label>
         <Form.Control

@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-export default function EquiposPage(){
-
+function Jugadores(){
     const [values, setValues] = useState({
         nombreDelEquipo: "",
         imagenLogo: "",
@@ -63,3 +62,5 @@ export default function EquiposPage(){
         </div>
       );
 }
+
+export default Jugadores

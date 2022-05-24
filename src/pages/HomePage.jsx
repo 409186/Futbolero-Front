@@ -5,8 +5,8 @@ function HomePage() {
   return (
     <div className="App">
       <div>
-        <h1><b>Welcome to Sharex 🎬</b></h1>
-        <h5>The platform for people that love entertainment</h5>
+        <h1><b>Bienvenido a Futbolero<img style={{height: 80, width: 80}} src="./Images/arbitro.png"/></b></h1>
+        <h5>La plataforma para armar la reta con tus compas</h5>
       </div>
     </div>
   );
