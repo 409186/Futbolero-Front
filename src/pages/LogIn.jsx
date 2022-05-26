@@ -9,10 +9,10 @@ import Button from 'react-bootstrap/Button'
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
-    correo: "",
-    contrasena: "",
+    email: "",
+    password: "",
   });
-  const { correo, contrasena } = form;
+  const { email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -25,8 +25,8 @@ export default function LogIn({ authenticate }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      correo,
-      contrasena,
+      email,
+      password,
     };
     login(credentials).then((res) => {
       if (!res.status) {
@@ -48,9 +48,9 @@ export default function LogIn({ authenticate }) {
         <Form.Control
           id="input-email"
           type="email"
-          name="correo"
+          name="email"
           placeholder="futbol@outlook.com"
-          value={correo}
+          value={email}
           onChange={handleInputChange}
           required
         />
@@ -59,9 +59,9 @@ export default function LogIn({ authenticate }) {
         <Form.Control
           id="input-password"
           type="password"
-          name="contrasena"
+          name="password"
           placeholder="Password"
-          value={contrasena}
+          value={password}
           onChange={handleInputChange}
           required
           minLength="8"

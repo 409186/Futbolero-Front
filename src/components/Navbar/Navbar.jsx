@@ -11,22 +11,26 @@ const Navbar = (props) => {
 
       <div>
         <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-          {CONSTS.CAPITALIZED_APP}
+          Futbolero
         </Link>
-        <Link to={PATHS.EQUIPO} className="nav__projectName">
-          Equipos
-        </Link>
-        <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-          Partidos
-        </Link>
+        {props.user && (
+          <>
+            <Link to={PATHS.FORMEQUIPO} className="nav__projectName">
+              AgregarEquipo
+            </Link>
+            <Link to={PATHS.EQUIPOS} className="nav__projectName">
+              Equipos
+            </Link>
+            <Link to={PATHS.PARTIDOS} className="nav__projectName">
+              Partidos
+            </Link>
+          </>
+        )}
       </div>
 
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
-              Protected Page
-            </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>

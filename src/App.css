@@ -3,7 +3,7 @@
   height: 100vh;
   background-position: center;
   background-size: cover;
-  color: rgb(252, 251, 250);
+  color: rgb(197, 195, 195);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -18,3 +18,14 @@
   font-size: 70px;
 }
 
+.contenedor {
+  text-decoration: none;
+  margin: auto;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+a:link { text-decoration: none; } 

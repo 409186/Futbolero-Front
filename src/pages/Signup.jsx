@@ -9,11 +9,11 @@ import Button from 'react-bootstrap/Button'
 
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
-    nombreDeUsuario: "",
-    correo: "",
-    contrasena: ""
+    username: "",
+    email: "",
+    password: ""
   });
-  const { nombreDeUsuario, contrasena, correo} = form;
+  const { username, password, email} = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -25,8 +25,8 @@ export default function Signup({ authenticate }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      correo,
-      contrasena,
+      email,
+      password,
     };
     signup(credentials).then((res) => {
       if (!res.status) {
@@ -53,9 +53,9 @@ export default function Signup({ authenticate }) {
         <Form.Control
           id="input-username"
           type="text"
-          name="nombreDeUsuario"
+          name="username"
           placeholder="Text"
-          value={nombreDeUsuario}
+          value={username}
           onChange={handleInputChange}
           required
         />
@@ -64,9 +64,9 @@ export default function Signup({ authenticate }) {
         <Form.Control
           id="input-email"
           type="email"
-          name="correo"
+          name="email"
           placeholder="futbol@outlook.com"
-          value={correo}
+          value={email}
           onChange={handleInputChange}
           required
         />
@@ -75,9 +75,9 @@ export default function Signup({ authenticate }) {
         <Form.Control
           id="input-password"
           type="password"
-          name="contrasena"
+          name="password"
           placeholder="Password"
-          value={contrasena}
+          value={password}
           onChange={handleInputChange}
           required
           minLength="8"

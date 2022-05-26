@@ -2,12 +2,14 @@ import { Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/LogIn";
 import Signup from "../pages/Signup";
-import EquiposPage from "../pages/Equipos";
+import EquiposPage from "../pages/formEquipo";
 import ProtectedPage from "../pages/ProtectedPage";
 import * as PATHS from "../utils/paths";
 import Partidos from "../pages/Partidos";
 import Perfil from "../pages/Perfil";
 import Jugadores from "../pages/Jugadores";
+import Equipos from "../pages/Equipos";
+import Detalles from "../pages/Detalles";
 
 const routes = (props) => {
   const { user } = props;
@@ -34,20 +36,28 @@ const routes = (props) => {
       ),
     },
     {
-      path: PATHS.EQUIPO, 
-      element: <EquiposPage />
+      path: PATHS.FORMEQUIPO, 
+      element: <EquiposPage {...props}/>
     },
     {
       path: PATHS.PARTIDOS, 
-      element: <Partidos />
+      element: <Partidos {...props}/>
     },
     {
       path: PATHS.PERFIL, 
-      element: <Perfil />
+      element: <Perfil {...props}/>
     },
     {
       path: PATHS.JUGADORES, 
-      element: <Jugadores />
+      element: <Jugadores {...props}/>
+    },
+    {
+      path: PATHS.EQUIPOS,
+      element: <Equipos {...props}/>
+    },
+    {
+      path: PATHS.DETALLES,
+      element: <Detalles {...props}/>
     }
   ];
 };

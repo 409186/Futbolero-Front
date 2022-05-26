@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function Jugadores(){
+export default function EquiposPage(){
+
     const [values, setValues] = useState({
         nombreDelEquipo: "",
         imagenLogo: "",
@@ -38,7 +39,7 @@ function Jugadores(){
       return (
         <div>
             <center>
-                <h1>Resgitro de Equipo</h1>
+                <h1>Registro de Equipo</h1>
             </center>
             <form onSubmit={handleSubmit} className="auth__form">
               <Form.Label htmlFor="email">Nombre Del Equipo</Form.Label>
@@ -49,10 +50,16 @@ function Jugadores(){
                 value={values.nombreDelEquipo}
                 onChange={handleChange}
               />
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Logo del Equipo</Form.Label>
+                    <Form.Control
+                    type="file"
+                    name="imagenLogo"
+                    value={values.imagenLogo}
+                    onChange={handleChange}/>
+                </Form.Group>
               <Button variant="success" type="submit">Agregar Equipo</Button>
             </form>
         </div>
       );
 }
-
-export default Jugadores
