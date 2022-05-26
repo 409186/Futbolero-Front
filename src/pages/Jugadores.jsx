@@ -38,7 +38,7 @@ function Jugadores(){
       return (
         <div>
             <center>
-                <h1>Resgitro de Equipo</h1>
+                <h1>Registro de Jugadores</h1>
             </center>
             <form onSubmit={handleSubmit} className="auth__form">
               <Form.Label htmlFor="email">Nombre Del Equipo</Form.Label>

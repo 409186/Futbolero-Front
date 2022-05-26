@@ -1,13 +1,13 @@
+import axios from "axios";
 import React, {useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export default function EquiposPage(){
 
-    const [values, setValues] = useState({
-        nombreDelEquipo: "",
-        imagenLogo: "",
-      });
+    const [nombre, setNombre] = useState({});
+    const [imagen, setImagen] = useState({});
+
       function handleSubmit(event) {
         /*
           Previene el comportamiento default de los
@@ -15,6 +15,11 @@ export default function EquiposPage(){
         */
         event.preventDefault();
         // Aquí puedes usar values para enviar la información
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`, {nombre, imagen})
+        .then( datos => {
+          console.log("Datos =>", datos)
+        })
+        .catch( error => console.log("Este es el error =>", error))
       }
       function handleChange(evt) {
         /*
