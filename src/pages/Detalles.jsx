@@ -34,7 +34,7 @@ const Detalles = () => {
                     )
                 })
             }
-            <Link to={"/jugadores"}><Button variant="success">Agregar Jugador</Button></Link>
+            <Link to={`/jugadores/${id}`}><Button variant="success">Agregar Jugador</Button></Link>
         </center>
     </div>
   )
