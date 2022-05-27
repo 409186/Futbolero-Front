@@ -23,19 +23,19 @@ const Detalles = () => {
 
   return (
     <div>
-        <h1>Lista de jugadores de {equipos.nombreDelEquipo}</h1>
-        {
-            detalles.map(lista => {
-                return(
-                    <center>
-                        <ul key={lista._id}>
-                            <li>{lista.nombre}: <b>{lista.posicion}</b></li>
-                        </ul>
-                    </center>
-                )
-            })
-        }
-        <Link to={"/jugadores"}><Button variant="success">Agregar Jugador</Button></Link>
+        <center>
+            <h1>Lista de jugadores de {equipos.nombreDelEquipo}</h1>
+            {
+                detalles.map(lista => {
+                    return(
+                            <ul key={lista._id}>
+                                <li>{lista.nombre}: <b>{lista.posicion}</b></li>
+                            </ul>
+                    )
+                })
+            }
+            <Link to={"/jugadores"}><Button variant="success">Agregar Jugador</Button></Link>
+        </center>
     </div>
   )
 }
