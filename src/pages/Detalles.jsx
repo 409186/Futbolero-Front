@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 const Detalles = () => {
     const {id} = useParams()
@@ -10,13 +11,14 @@ const Detalles = () => {
     const [equipos, setEquipos] = useState({})
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/perfil/detalles/${id}`)
+        // axios.get(`${process.env.REACT_APP_SERVER_URL}/perfil/detalles/${id}`)
+        axios.get(`http://localhost:5005/perfil/detalles/${id}`)
         .then( datos => {
             console.log(datos.data)
             setDetalles(datos.data.jugadores)
             setEquipos(datos.data)
         })
-        .catch()
+        .catch(error => console.log("Este es el error =>", error))
     }, [id])
 
   return (
@@ -33,6 +35,7 @@ const Detalles = () => {
                 )
             })
         }
+        <Link to={"/jugadores"}><Button variant="success">Agregar Jugador</Button></Link>
     </div>
   )
 }

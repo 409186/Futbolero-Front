@@ -7,7 +7,8 @@ const Equipos = () => {
     const [equipos, setEquipos] = useState([])
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`)
+        // axios.get(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`)
+        axios.get(`http://localhost:5005/perfil/equipos`)
         .then(datos => setEquipos(datos.data.teams))
         .catch(error => {console.log("Este es el error =>", error)})
     }, [])

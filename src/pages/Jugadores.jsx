@@ -1,58 +1,52 @@
 import React, {useState} from "react";
+import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {useNavigate} from 'react-router-dom'
 
 function Jugadores(){
-    const [values, setValues] = useState({
-        nombreDelEquipo: "",
-        imagenLogo: "",
-      });
-      function handleSubmit(event) {
-        /*
-          Previene el comportamiento default de los
-          formularios el cual recarga el sitio
-        */
-        event.preventDefault();
-        // Aquí puedes usar values para enviar la información
-      }
-      function handleChange(evt) {
-        /*
-          evt.target es el elemento que ejecuto el evento
-          name identifica el input y value describe el valor actual
-        */
-        const { target } = evt;
-        const { name, value } = target;
-        /*
-          Este snippet:
-          1. Clona el estado actual
-          2. Reemplaza solo el valor del
-             input que ejecutó el evento
-        */
-        const newValues = {
-          ...values,
-          [name]: value,
-        };
-        // Sincroniza el estado de nuevo
-        setValues(newValues);
-      }
-      return (
-        <div>
-            <center>
-                <h1>Registro de Jugadores</h1>
-            </center>
-            <form onSubmit={handleSubmit} className="auth__form">
-              <Form.Label htmlFor="email">Nombre Del Equipo</Form.Label>
-              <Form.Control
-                id="nombreEquipo"
-                name="nombreDelEquipo"
-                type="text"
-                value={values.nombreDelEquipo}
-                onChange={handleChange}
-              />
-              <Button variant="success" type="submit">Agregar Equipo</Button>
-            </form>
-        </div>
-      );
+  const [nombre, setNombre] = useState("");
+  const [posicion, setPosicion] = useState("");
+
+  const navigate = useNavigate()
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      // axios.post(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`, {nombreDelEquipo: nombre, imagenLogo: imagen})
+      axios.post(`http://localhost:5005/equipos/jugadores`, {nombre, posicion})
+      .then( datos => {
+        navigate("/equipos")
+      })
+      .catch( error => console.log("Este es el error =>", error))
+    }
+    
+    return (
+      <div>
+          <center>
+              <h1>Registro de Jugador</h1>
+          </center>
+          <form onSubmit={handleSubmit} className="auth__form">
+            <Form.Label htmlFor="email">Nombre</Form.Label>
+            <Form.Control
+              id="nombreEquipo"
+              name="nombreDelEquipo"
+              type="text"
+              value={nombre}
+              onChange={ (event) => setNombre(event.target.value)}
+            />
+              <Form.Group controlId="formFile" className="mb-3">
+                  <Form.Label>Posición</Form.Label>
+                  <Form.Control
+                  type="text"
+                  name="posicion"
+                  value={posicion}
+                  onChange={(event) => setPosicion(event.target.value)}/>
+              </Form.Group>
+            <Button variant="success" type="submit">Agregar Jugador</Button>
+          </form>
+      </div>
+    );
 }
 
 export default Jugadores

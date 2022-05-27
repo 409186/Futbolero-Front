@@ -2,45 +2,26 @@ import axios from "axios";
 import React, {useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {useNavigate} from 'react-router-dom'
 
 export default function EquiposPage(){
 
-    const [nombre, setNombre] = useState({});
-    const [imagen, setImagen] = useState({});
+    const [nombre, setNombre] = useState("");
+    const [imagen, setImagen] = useState("");
 
-      function handleSubmit(event) {
-        /*
-          Previene el comportamiento default de los
-          formularios el cual recarga el sitio
-        */
-        event.preventDefault();
-        // Aquí puedes usar values para enviar la información
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`, {nombre, imagen})
+    const navigate = useNavigate()
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        
+        // axios.post(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`, {nombreDelEquipo: nombre, imagenLogo: imagen})
+        axios.post(`http://localhost:5005/perfil/equipos`, {nombreDelEquipo: nombre, imagenLogo: imagen})
         .then( datos => {
-          console.log("Datos =>", datos)
+          navigate("/equipos")
         })
         .catch( error => console.log("Este es el error =>", error))
       }
-      function handleChange(evt) {
-        /*
-          evt.target es el elemento que ejecuto el evento
-          name identifica el input y value describe el valor actual
-        */
-        const { target } = evt;
-        const { name, value } = target;
-        /*
-          Este snippet:
-          1. Clona el estado actual
-          2. Reemplaza solo el valor del
-             input que ejecutó el evento
-        */
-        const newValues = {
-          ...values,
-          [name]: value,
-        };
-        // Sincroniza el estado de nuevo
-        setValues(newValues);
-      }
+      
       return (
         <div>
             <center>
@@ -52,16 +33,16 @@ export default function EquiposPage(){
                 id="nombreEquipo"
                 name="nombreDelEquipo"
                 type="text"
-                value={values.nombreDelEquipo}
-                onChange={handleChange}
+                value={nombre}
+                onChange={ (event) => setNombre(event.target.value)}
               />
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Logo del Equipo</Form.Label>
                     <Form.Control
-                    type="file"
+                    type="text"
                     name="imagenLogo"
-                    value={values.imagenLogo}
-                    onChange={handleChange}/>
+                    value={imagen}
+                    onChange={(event) => setImagen(event.target.value)}/>
                 </Form.Group>
               <Button variant="success" type="submit">Agregar Equipo</Button>
             </form>
