@@ -13,8 +13,8 @@ function Jugadores(){
     function handleSubmit(e) {
       e.preventDefault();
       
-      // axios.post(`${process.env.REACT_APP_SERVER_URL}/perfil/equipos`, {nombreDelEquipo: nombre, imagenLogo: imagen})
-      axios.post(`http://localhost:5005/equipos/jugadores`, {nombre, posicion})
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/equipos/jugadores`, {nombre, posicion})
+      // axios.post(`http://localhost:5005/equipos/jugadores`, {nombre, posicion})
       .then( datos => {
         navigate("/equipos")
       })

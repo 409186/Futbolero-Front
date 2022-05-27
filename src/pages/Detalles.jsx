@@ -11,8 +11,8 @@ const Detalles = () => {
     const [equipos, setEquipos] = useState({})
 
     useEffect(() => {
-        // axios.get(`${process.env.REACT_APP_SERVER_URL}/perfil/detalles/${id}`)
-        axios.get(`http://localhost:5005/perfil/detalles/${id}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/perfil/detalles/${id}`)
+        // axios.get(`http://localhost:5005/perfil/detalles/${id}`)
         .then( datos => {
             console.log(datos.data)
             setDetalles(datos.data.jugadores)
